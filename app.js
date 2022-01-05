@@ -10,45 +10,31 @@ const error4 = document.getElementById("error4")
 
 const btn = document.getElementById("submit")
 
+const popup = document.querySelector(".popup")
+
 btn.addEventListener("click", function() {
     let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
 
-    const getErrorTrue = (error, input) => {
+    const errorShown = (error, input) => {
         error.style.opacity = "1"
         input.classList.add("active")
-        input.placeholder = ""
+        input.placeholder = ""  
     }
 
-    const getErrorFalse = (error, input) => {
+    const errorHidden = (error, input) => {
         error.style.opacity = "0"
         input.classList.remove("active")
     }
 
-    if (fname.value === "") {
-        getErrorTrue(error1, fname)
-    } else {
-        getErrorFalse(error1, fname)
-    }
+    const getError = (error, input) => input.value === "" ? errorShown(error, input) : errorHidden(error, input)
 
-    if (lname.value === "") {
-        getErrorTrue(error2, lname)
-    } else {
-        getErrorFalse(error2, lname)
-    }        
+    const getErrorEmail = (error, input) => !regex.test(email.value) ? errorShown(error, input) : errorHidden(error, input)
 
-    if (!regex.test(email.value)) {
-        getErrorTrue(error3, email)
-    } else {
-        getErrorFalse(error3, email)
-    }
+    getError(error1, fname)
+    getError(error2, lname)    
+    getErrorEmail(error3, email)
+    getError(error4, password)
 
-    if (password.value === "") {
-        getErrorTrue(error4, password)
-    } else {
-        getErrorFalse(error4, password)
-    }
+    fname.value && lname.value && regex.test(email.value) && password.value ? popup.style.opacity = "1" : popup.style.opacity = "0"
 
-    if (fname.value && lname.value && email.value && password.value) {
-        document.querySelector(".popup").style.opacity = "1" 
-    }
 })
