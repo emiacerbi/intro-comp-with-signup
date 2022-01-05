@@ -13,50 +13,44 @@ const btn = document.getElementById("submit")
 btn.addEventListener("click", function() {
     let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
 
+    const getErrorTrue = (error, input) => {
+        error.style.opacity = "1"
+        input.classList.add("active")
+        input.placeholder = ""
+    }
+
+    const getErrorFalse = (error, input) => {
+        error.style.opacity = "0"
+        input.classList.remove("active")
+    }
+
     if (fname.value === "") {
-        error1.style.opacity = "1"
-        fname.classList.add("active") 
-        fname.placeholder = ""
+        getErrorTrue(error1, fname)
     } else {
-        error1.style.opacity = "0"
-        fname.classList.remove("active") 
+        getErrorFalse(error1, fname)
     }
 
     if (lname.value === "") {
-        error2.style.opacity = "1"
-        lname.classList.add("active") 
-        lname.placeholder = ""
+        getErrorTrue(error2, lname)
     } else {
-        error2.style.opacity = "0"
-        lname.classList.remove("active") 
-
-    }
-
+        getErrorFalse(error2, lname)
+    }        
 
     if (!regex.test(email.value)) {
-        error3.style.opacity = "1"
-        email.classList.add("active") 
-        email.placeholder = ""
-        email.value = ""
+        getErrorTrue(error3, email)
     } else {
-        error3.style.opacity = "0"
-        email.classList.remove("active") 
-
+        getErrorFalse(error3, email)
     }
 
     if (password.value === "") {
-        error4.style.opacity = "1"
-        password.classList.add("active") 
-        password.placeholder = ""
-
+        getErrorTrue(error4, password)
     } else {
-        error4.style.opacity = "0"
-        password.classList.remove("active") 
+        getErrorFalse(error4, password)
     }
 
     if (fname.value && lname.value && email.value && password.value) {
         document.querySelector(".popup").style.opacity = "1" 
     }
-    
 })
 
+console.log("test")
