@@ -52,5 +52,3 @@ btn.addEventListener("click", function() {
         document.querySelector(".popup").style.opacity = "1" 
     }
 })
-
-console.log("test")
