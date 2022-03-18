@@ -20,7 +20,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Link](https://emiacerbi.github.io/intro-comp-with-signup-fm/)
+- Live Site URL: [Link](https://emiacerbi.github.io/intro-comp-with-signup/)
 
 ## My process
 
